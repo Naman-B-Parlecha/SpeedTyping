@@ -7,7 +7,7 @@ export default function Input({ label, children, ...props }) {
         {label}
       </label>
       <div className="inputCon">
-        <input className="myinput" {...props} />
+        <input className="myinput" {...props} required/>
         <p className="input-icon">{children}</p>
       </div>
     </>
