@@ -1,20 +1,22 @@
-*{
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-:root{  
+:root {
   --RED: #e5383b;
 
-  --L-BLACK : #0A0908;
-  --L-DARKBLUE: #22333B;
-  --L-SKINCOLOR : #EAE0D5;
-  --L-LIGHTBROWN: #C6AC8F;
-  --L-DARKBROWN: #5E503F;
+  --L-BLACK: #0a0908;
+  --L-DARKBLUE: #22333b;
+  --L-SKINCOLOR: #eae0d5;
+  --L-LIGHTBROWN: #c6ac8f;
+  --L-DARKBROWN: #5e503f;
 
-  --D-BLACK:#222831;
-  --D-GRAY: #393E46;
-  --D-YELLOW: #FFD369;
-  --D-WHITE: #EEEEEE;
+  --D-BLACK: #222831;
+  --D-GRAY: #393e46;
+  --D-YELLOW: #ffd369;
+  --D-WHITE: #eeeeee;
 }
