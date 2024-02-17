@@ -13,7 +13,6 @@
     display: flex;
     position: relative;
     .signUp {
-      //   background-color: aquamarine;
       display: flex;
       padding: 4rem;
       flex-direction: column;
@@ -43,11 +42,17 @@
       .headerspan {
         padding-left: 0.5rem;
         .spanButton {
+          background-color: transparent;
           border: none;
           outline: none;
           color: var(--L-DARKBLUE);
           font-size: 1rem;
           cursor: pointer;
+          font-weight: 600;
+          transition: all 0.2s ease 0s;
+          &:hover{
+            color: var(--D-YELLOW);
+          }
         }
       }
       .formLab {
@@ -66,6 +71,7 @@
         align-items: center;
         justify-content: space-between;
         .myinput {
+          width: 100%;
           font-size: 1.1rem;
           background-color: transparent;
           outline: none;
@@ -78,7 +84,13 @@
           font-weight: 300;
         }
       }
-
+      .error-msg{
+        font-family: monospace;
+        font-weight: 600;
+        font-size: 1.1rem;
+        text-align: center;
+        color: var(--RED);
+      }
       .submit {
         border: none;
         outline: none;
@@ -91,6 +103,12 @@
         cursor: pointer;
         margin-bottom: 1rem;
         margin-top: 1rem;
+        transition: all 0.4s ease-in-out 0s;
+        font-weight: 600;
+        &:hover{
+          background-color: var(--D-YELLOW);
+          color: var(--L-BLACK);        
+        }
       }
       .oneliner {
         opacity: 0.7;
@@ -105,10 +123,9 @@
       border-radius: 1rem;
       width: 50%;
       flex: 1;
-      // background-color: rgba(95, 158, 160, 0.416);
       position: absolute;
       right: 0;
-      transition: all 0.5s ease; 
+      transition: all 0.7s ease; 
 
       .img{
         width: 100%;

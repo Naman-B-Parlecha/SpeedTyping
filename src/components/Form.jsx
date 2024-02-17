@@ -8,6 +8,7 @@ export default function Form({
   mode,
   currentMode,
   changeMode,
+  onSubmit,
 }) {
   return (
     <div className="signUp">
@@ -23,11 +24,13 @@ export default function Form({
       </p>
       <form>
         {children}
-        <input type="submit" value={currentMode} className="submit" />
+        <button type="button" className="submit" onClick={onSubmit}>
+          {currentMode}
+        </button>
       </form>
       <p className="oneliner">
-        Accelerate your typing, accelerate your success. By using our site,
-        you're ready to speed up your typing skills.
+        Accelerate your typing with our dynamic platform featuring races and
+        practice sessions for skill enhancement.
       </p>
     </div>
   );
