@@ -1,0 +1,75 @@
+.navcon{
+    width: 100%;
+    height: 5rem;
+    background-color: var(--D-GRAY);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-flow: row wrap;
+    padding:0 1rem;
+
+    .nav-header{
+        // background-color: rgba(0, 0, 255, 0.084);
+        flex: 1;
+        padding-left: 4rem;
+        font-size: 2rem;
+        font-weight: 600;
+        font-family: 'Fredoka';
+        color: var(--D-YELLOW);
+    }
+    .nav-inner-con{
+        flex: 2;
+        // background-color: bisque;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        height: 100%;
+        align-items: center;
+        .nav-link{
+            font-style: italic;
+            text-decoration: none;
+            font-size: 1.25rem;
+            color: var(--D-YELLOW);
+            outline: none;
+            border: none;
+            transition: all 0.2s ease-in 0s;
+            &:hover{
+                color: var(--L-LIGHTBROWN);
+            }
+        }
+        .darkmode{
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            gap: 0.5rem;
+            transition: all 0.2s ease-in 0s;
+            .darkmode-text{
+                font-size: 1rem;
+                color: var(--D-YELLOW);
+            }
+            .darkmode-icon{
+                font-size: 1.5rem;
+                color: var(--D-YELLOW);
+            }
+        }
+        .userNav{
+            padding: 0.5rem 0.6rem;
+            border-radius: 50%;
+            background-color: transparent;
+            outline: none;
+            border: 2px solid var(--D-YELLOW);
+            color: var(--D-YELLOW);
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s ease-in 0s;
+            &:hover{
+                background-color: var(--D-YELLOW);
+                border-color: var(--D-YELLOW);
+                color: var(--D-GRAY);
+                
+            }
+        }
+    } 
+}

@@ -9,15 +9,17 @@ import {
   Route,
 } from "react-router-dom";
 import LoginPage from "./pages/LoginPage.jsx";
-import HomePage from "./pages/HomePage.jsx";
 import SplashPage from "./pages/SplashPage.jsx";
+import TypingTest from "./pages/TypingTest.jsx";
+import TypingPractice from "./pages/TypingPractice.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/" element={<SplashPage />}>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<TypingTest />} />
+        <Route path="/practice" element={<TypingPractice />} />
       </Route>
     </Route>
   )
