@@ -85,15 +85,14 @@
         }
       }
       .error-msg{
-        font-family: "Lato";
+        height: 2px;
+        font-family: 'Courier New', Courier, monospace;
         font-weight: 600;
-        font-size: 1.1rem;
+        font-size: smaller;
         text-align: center;
+        transform: translateY(-10px);
         color: var(--RED);
-      }
-      
-      .error-msg p {
-        margin: 0;
+        margin-bottom: 0.25rem;
       }
       .submit {
         border: none;

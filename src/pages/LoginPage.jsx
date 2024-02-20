@@ -1,20 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import "./Loginpage.scss";
-import Input from "../components/Input";
-import Form from "../components/Form";
-import backImage from "../assets/backImage.jpg";
-
-import { FaRegUser } from "react-icons/fa";
-import { TfiEmail } from "react-icons/tfi";
-import { RiLockPasswordLine } from "react-icons/ri";
-
 import { auth } from "../utils/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+
+import "./Loginpage.scss";
+import SignUp from "../components/SignUp";
+import SignIn from "../components/SignIn";
+import backImage from "../assets/backImage.jpg";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -31,7 +27,17 @@ export default function LoginPage() {
     email: "",
     password: "",
   });
+  const [signUpError, setSignUpError] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+  const [signInError, setSignInError] = useState({
+    email: "",
+    password: "",
+  });
   const [error, setError] = useState("");
+
   function changeMode() {
     if (mode === "Sign Up") {
       setMode("Sign In");
@@ -40,29 +46,47 @@ export default function LoginPage() {
       setMode("Sign Up");
       setImagePos("position-right");
     }
-    setError("");
+    setSignInError({ email: "", password: "" });
+    setSignUpError({ username: "", email: "", password: "" });
     console.log(mode, imagePos);
   }
 
   function signUpChangeHandler(identifier, event) {
-    setError("");
+    setSignUpError({ username: "", email: "", password: "" });
     setSignUpDetails((prev) => ({ ...prev, [identifier]: event.target.value }));
   }
   function signInChangeHandler(identifier, event) {
-    setError("");
+    setSignInError({ email: "", password: "" });
     setSignInDetails((prev) => ({ ...prev, [identifier]: event.target.value }));
   }
 
   async function handleSignUp(e) {
     e.preventDefault();
+    let isError = false;
     try {
-      if (
-        signUpDetails.username === "" ||
-        !signUpDetails.email.includes("@") ||
-        signUpDetails.password.length < 6
-      ) {
-        throw new Error("Kindly fill all the fields correctly.");
+      if (signUpDetails.username === "") {
+        setSignUpError((prev) => ({
+          ...prev,
+          username: "Kindly fill the username field.",
+        }));
+        isError = true;
       }
+      if (!signUpDetails.email.includes("@")) {
+        setSignUpError((prev) => ({
+          ...prev,
+          email: "Kindly fill the email field correctly.",
+        }));
+        isError = true;
+      }
+      if (signUpDetails.password.length < 6) {
+        setSignUpError((prev) => ({
+          ...prev,
+          password: "Password should be atleast 6 characters long.",
+        }));
+        isError = true;
+      }
+
+      if (isError) return;
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         signUpDetails.email,
@@ -88,14 +112,24 @@ export default function LoginPage() {
   }
   async function handleSignIn(e) {
     e.preventDefault();
-
+    let isError = false;
     try {
-      if (
-        !signInDetails.email.includes("@") ||
-        signInDetails.password.length < 6
-      ) {
-        throw new Error("No such user found. Kindly check your credentials.");
+      if (!signInDetails.email.includes("@")) {
+        setSignInError((prev) => ({
+          ...prev,
+          email: "Kindly fill the email field correctly.",
+        }));
+        isError = true;
       }
+      if (signInDetails.password.length < 6) {
+        setSignInError((prev) => ({
+          ...prev,
+          password: "Password should be atleast 6 characters long.",
+        }));
+        isError = true;
+      }
+      if (isError) return;
+
       const userCredential = await signInWithEmailAndPassword(
         auth,
         signInDetails.email,
@@ -109,99 +143,32 @@ export default function LoginPage() {
       navigate("/");
       setSignInDetails((prev) => ({ ...prev, email: "", password: "" }));
     } catch (error) {
-      if (error.message === "Firebase: Error (auth/invalid-email).") {
-        setError("No such user found. Kindly check your credentials.");
-      } else {
-        setError(error.message);
-      }
+      setError(error.message);
       console.log(error.message);
     }
   }
   return (
     <div className="loginpagecon">
       <div className="secondaryLogin">
-        <Form
-          registerTitle={"REGISTER NOW"}
-          headerTitle={"Sign Up For Free."}
-          headerDesp={"Already have an account?"}
-          mode={"Sign In."}
-          currentMode={"Sign Up"}
+        <SignUp
           changeMode={changeMode}
-          onSubmit={handleSignUp}
-        >
-          <Input
-            label={"Username"}
-            placeholder="username"
-            type="text"
-            value={signUpDetails.username}
-            onChange={(e) => {
-              signUpChangeHandler("username", e);
-            }}
-          >
-            <FaRegUser />
-          </Input>
-          <Input
-            label={"E-mail"}
-            placeholder="email"
-            type="email"
-            value={signUpDetails.email}
-            onChange={(e) => {
-              signUpChangeHandler("email", e);
-            }}
-          >
-            <TfiEmail />
-          </Input>
-          <Input
-            label={"Password"}
-            placeholder="password"
-            type="password"
-            value={signUpDetails.password}
-            onChange={(e) => {
-              signUpChangeHandler("password", e);
-            }}
-          >
-            <RiLockPasswordLine />
-          </Input>
-          {error && <p className="error-msg">{error}!!!</p>}
-        </Form>
-
+          handleSignUp={handleSignUp}
+          signUpDetails={signUpDetails}
+          signUpError={signUpError}
+          error={error}
+          signUpChangeHandler={signUpChangeHandler}
+        />
         <div className={`img-con ${imagePos}`}>
           <img src={backImage} className="img" />
         </div>
-
-        <Form
-          registerTitle={"RESUME JOURNEY"}
-          headerTitle={"Sign In to Torch"}
-          headerDesp={"Dont have an account?"}
-          mode={"Sign Up."}
-          currentMode={"Sign In"}
+        <SignIn
           changeMode={changeMode}
-          onSubmit={handleSignIn}
-        >
-          <Input
-            label={"E-mail"}
-            placeholder="email"
-            type="email"
-            value={signInDetails.email}
-            onChange={(e) => {
-              signInChangeHandler("email", e);
-            }}
-          >
-            <TfiEmail />
-          </Input>
-          <Input
-            label={"Password"}
-            placeholder="password"
-            type="password"
-            value={signInDetails.password}
-            onChange={(e) => {
-              signInChangeHandler("password", e);
-            }}
-          >
-            <RiLockPasswordLine />
-          </Input>
-          {error && <p className="error-msg">{error}!!!</p>}
-        </Form>
+          handleSignIn={handleSignIn}
+          signInDetails={signInDetails}
+          signInError={signInError}
+          error={error}
+          signInChangeHandler={signInChangeHandler}
+        />
       </div>
     </div>
   );
