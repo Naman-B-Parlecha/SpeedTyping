@@ -1,0 +1,55 @@
+.navCon {
+  background-color: var(--X-Gray);
+  display: flex;
+  flex-flow: row wrap;
+
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem 1rem;
+  border-radius: 1rem;
+}
+.navHeader {
+  flex: 1;
+  color: var(--X-Purple);
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-family: "Bungee", sans-serif;
+}
+.navHeadLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.navLogo {
+  border-radius: 1rem;
+  width: 3rem;
+  height: 3rem;
+}
+.grp-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex: 3;
+}
+.nav-links {
+  font-family: "Kanit", sans-serif;
+  color: var(--X-White);
+  transition: all 0.3s ease-out 0s;
+}
+.nav-links:hover {
+  color: var(--X-Purple);
+}
+.userProf {
+  color: var(--X-White);
+  flex: 1;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.active {
+  color: var(--X-Purple);
+}
