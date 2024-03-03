@@ -48,6 +48,7 @@ export default function LoginPage() {
     }
     setSignInError({ email: "", password: "" });
     setSignUpError({ username: "", email: "", password: "" });
+    setError("");
     console.log(mode, imagePos);
   }
 
@@ -95,7 +96,10 @@ export default function LoginPage() {
 
       console.log(userCredential);
       let user = userCredential.user;
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ email: user.email, password: signUpDetails.password })
+      );
       localStorage.setItem("token", user.accessToken);
       console.log("user", user.displayName);
       navigate("/");
@@ -136,7 +140,7 @@ export default function LoginPage() {
         signInDetails.password
       );
       const user = userCredential.user;
-      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("user", JSON.stringify({ email: user.email, password: signInDetails.password }));
       localStorage.setItem("token", user.accessToken);
       console.log("user", user);
 

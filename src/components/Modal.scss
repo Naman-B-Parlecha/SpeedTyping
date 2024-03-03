@@ -1,0 +1,73 @@
+.modalConMain {
+  min-width: 23rem;
+  min-height: 25rem;
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  padding: 1rem 2rem;
+  background-color: #4d455d;
+  border-radius: 1rem;
+
+  .modalContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .modalform {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      .closeModal {
+        font-size: 2rem;
+        transition: all 0.2s ease-in-out 0s;
+        &:hover {
+          color: var(--X-White);
+        }
+      }
+    }
+
+    .modalHeader {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15rem;
+      color: var(--X-Purple);
+      font-family: "kanit";
+    }
+    .modalDetails {
+      padding-top: 1.25rem;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .detailHead {
+        color: var(--X-White);
+        font-size: 1rem;
+        font-family: "quicksand";
+      }
+      .details {
+        color: var(--X-Purple);
+        font-size: 1.25rem;
+      }
+    }
+    .signOutBtn {
+      width: 100%;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      background-color: var(--X-Purple);
+      color: var(--X-White);
+      font-size: 1.2rem;
+      outline: none;
+      border: none;
+      border-radius: 6px;
+      transition: all 0.3s ease-out 0s;
+      font-weight: 600;
+
+      &:hover {
+        background-color: #9772fb;
+      }
+    }
+  }
+}

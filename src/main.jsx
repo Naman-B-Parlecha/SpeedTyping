@@ -12,6 +12,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import SplashPage from "./pages/SplashPage.jsx";
 import TypingTest from "./pages/TypingTest.jsx";
 import TypingPractice from "./pages/TypingPractice.jsx";
+import LeaderboardPage from "./pages/LeaderboardPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,6 +21,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<SplashPage />}>
         <Route path="/" element={<TypingTest />} />
         <Route path="/practice" element={<TypingPractice />} />
+        <Route path="/leaderboard" element={<LeaderboardPage />} />
       </Route>
     </Route>
   )

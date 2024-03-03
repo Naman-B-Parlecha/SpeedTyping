@@ -1,27 +1,23 @@
-.typeTestPageCon{
-    padding: 1rem 2rem;
+.LeaderBoardPageCon{
     width: 100%;
     height: 100vh;
     background-color: var(--X-Black);
+    padding: 1rem 2rem;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
-    // position: relative;
-    .testheader{
+
+    .LBheader{
         color: var(--X-Purple);
         padding-top: 12rem;
         font-weight: 600;
         font-family: "Kanit", sans-serif;
         font-size: 3rem;
-        letter-spacing: 0.5rem;
     }
-    .testmessage{
+    .LBmessage{
         color: var(--X-Purple);
         font-weight: 400;
         font-family: "Kanit", sans-serif;
         font-size: 1.5rem;
-    }
-    .but{
-        background-color: aliceblue;
     }
 }
