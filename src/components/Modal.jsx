@@ -25,29 +25,34 @@ export default function Modal({ open, onClose }) {
   }
 
   return createPortal(
-    <dialog ref={dialogRef} onClose={onClose} className="modalConMain">
-      <div className="modalContainer">
-        <form method="dialog" className="modalform">
-          <button className="closeModal">
-            <IoIosClose />
+    <>
+      {open && <div className="backdropCon" />}
+      <dialog ref={dialogRef} onClose={onClose} className="modalConMain">
+        <div className="modalContainer">
+          <form method="dialog" className="modalform">
+            <button className="closeModal">
+              <IoIosClose />
+            </button>
+          </form>
+          <h1 className="modalHeader">User Details</h1>
+          <div className="modalDetails">
+            <label className="detailHead">UserName: </label>
+            <p className="details">Naman Parlecha</p>
+          </div>
+          <div className="modalDetails">
+            <label className="detailHead">Email: </label>
+            <p className="details">{email}</p>
+          </div>
+          <div className="modalDetails">
+            <label className="detailHead">Password: </label>
+            <p className="details">{password}</p>
+          </div>
+          <button className="signOutBtn" onClick={handleSignOut}>
+            SignOut
           </button>
-        </form>
-        <h1 className="modalHeader">User Details</h1>
-        <div className="modalDetails">
-          <label className="detailHead">UserName: </label>
-          <p className="details">Naman Parlecha</p>
         </div>
-        <div className="modalDetails">
-          <label className="detailHead">Email: </label>
-          <p className="details">{email}</p>
-        </div>
-        <div className="modalDetails">
-          <label className="detailHead">Password: </label>
-          <p className="details">{password}</p>
-        </div>
-        <button className="signOutBtn" onClick={handleSignOut}>SignOut</button>
-      </div>
-    </dialog>,
+      </dialog>
+    </>,
     document.getElementById("modal")
   );
 }
