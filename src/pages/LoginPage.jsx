@@ -5,6 +5,7 @@ import { auth } from "../utils/firebase";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 
 import "./Loginpage.scss";
@@ -96,12 +97,11 @@ export default function LoginPage() {
 
       console.log(userCredential);
       let user = userCredential.user;
-      localStorage.setItem(
-        "user",
-        JSON.stringify({ email: user.email, password: signUpDetails.password })
-      );
+      await updateProfile(user, { displayName: signUpDetails.username });
+      console.log("user", user);
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("userPass", signUpDetails.password);
       localStorage.setItem("token", user.accessToken);
-      console.log("user", user.displayName);
       navigate("/");
       setSignUpDetails((prev) => ({
         ...prev,
@@ -140,7 +140,8 @@ export default function LoginPage() {
         signInDetails.password
       );
       const user = userCredential.user;
-      localStorage.setItem("user", JSON.stringify({ email: user.email, password: signInDetails.password }));
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("userPass", JSON.stringify(signInDetails.password));
       localStorage.setItem("token", user.accessToken);
       console.log("user", user);
 
