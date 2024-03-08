@@ -9,9 +9,11 @@ import CountDownTimer from "../components/UI/CountDownTimer";
 import RestartButton from "../components/UI/RestartButton";
 import ResultModal from "../components/UI/ResultModal";
 import UserInputTyped from "../components/UI/UserInputTyped";
-const words = faker.random.words(20);
+import { useEngine } from "../hooks/useEngine";
+// const words = faker.random.words(20);
 
 export default function TypingTest() {
+  const { state, words, timeRemaining } = useEngine();
   return (
     <div className="typeTestPageCon">
       <NavBar />
@@ -19,10 +21,13 @@ export default function TypingTest() {
       <p className='testmessage'>Under Construction.....</p> */}
       {/* <button onClick={handleSignOut} className="but">SignOut</button> */}
       <div className="textMainCon">
-        <CountDownTimer time={30} />
+        <CountDownTimer time={timeRemaining} />
         <div className="relative text-3xl leading-relaxed break-all">
           <GeneratedWords words={words} />
-          <UserInputTyped userInput={'testing'} cssClass="absolute inset-0" />
+          <UserInputTyped
+            userInput={"Naman B Parlecha"}
+            cssClass="absolute inset-0"
+          />
         </div>
         <RestartButton handleRestart={() => {}} />
         <ResultModal />
