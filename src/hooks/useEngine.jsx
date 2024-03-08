@@ -4,7 +4,7 @@ import { useCountDown } from "./useCountDown";
 import { useTyping } from "./useTyping";
 import { countErrors } from "../utils/calculation";
 
-const WORD_COUNT = 20;
+const WORD_COUNT = 27;
 const COUNTDOWNTIME = 30;
 //state = start | run | finish;
 export function useEngine() {

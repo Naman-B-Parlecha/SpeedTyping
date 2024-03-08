@@ -11,6 +11,7 @@ import ResultModal from "../components/UI/ResultModal";
 import UserInputTyped from "../components/UI/UserInputTyped";
 import { useEngine } from "../hooks/useEngine";
 import { calculateAccuracyPercentage } from "../utils/calculation";
+import CustomKeyboard from "../components/Keyboard";
 // const words = faker.random.words(20);
 
 export default function TypingTest() {
@@ -29,7 +30,7 @@ export default function TypingTest() {
       <div className="textMainCon">
         <CountDownTimer time={timeRemaining} />
         <div className="relative text-3xl leading-relaxed break-all">
-          <GeneratedWords words={words} />
+          <GeneratedWords words={words}/>
           <UserInputTyped
             userInput={typed}
             cssClass="absolute inset-0"
@@ -37,13 +38,14 @@ export default function TypingTest() {
           />
         </div>
         <RestartButton handleRestart={restart} />
-        {state === "finish" && (
+        {/* {state === "finish" && (
           <ResultModal
             errors={errors}
             accuracy={calculateAccuracyPercentage(errors, totalTypedChars)}
             characters={totalTypedChars}
           />
-        )}
+        )} */}
+        <CustomKeyboard />
       </div>
     </div>
   );

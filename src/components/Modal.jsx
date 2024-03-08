@@ -5,6 +5,8 @@ import { IoIosClose } from "react-icons/io";
 import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/backImage.jpg";
+
 export default function Modal({ open, onClose }) {
   const dialogRef = useRef();
   const navigate = useNavigate();
@@ -30,28 +32,33 @@ export default function Modal({ open, onClose }) {
     <>
       {open && <div className="backdropCon" />}
       <dialog ref={dialogRef} onClose={onClose} className="modalConMain">
-        <div className="modalContainer">
-          <form method="dialog" className="modalform">
-            <button className="closeModal">
-              <IoIosClose />
+        <div className="modalSecDiv">
+          <div className="ImgConModal">
+            <img src={logo} alt="logo" className="modalImg"/>
+          </div>
+          <div className="modalContainer">
+            <form method="dialog" className="modalform">
+              <button className="closeModal">
+                <IoIosClose />
+              </button>
+            </form>
+            <h1 className="modalHeader">User Details</h1>
+            <div className="modalDetails">
+              <label className="detailHead">UserName : </label>
+              <p className="details">{displayName}</p>
+            </div>
+            <div className="modalDetails">
+              <label className="detailHead">Email : </label>
+              <p className="details">{email}</p>
+            </div>
+            <div className="modalDetails">
+              <label className="detailHead">Password : </label>
+              <p className="details">{password}</p>
+            </div>
+            <button className="signOutBtn" onClick={handleSignOut}>
+              SignOut
             </button>
-          </form>
-          <h1 className="modalHeader">User Details</h1>
-          <div className="modalDetails">
-            <label className="detailHead">UserName : </label>
-            <p className="details">{displayName}</p>
           </div>
-          <div className="modalDetails">
-            <label className="detailHead">Email : </label>
-            <p className="details">{email}</p>
-          </div>
-          <div className="modalDetails">
-            <label className="detailHead">Password : </label>
-            <p className="details">{password}</p>
-          </div>
-          <button className="signOutBtn" onClick={handleSignOut}>
-            SignOut
-          </button>
         </div>
       </dialog>
     </>,

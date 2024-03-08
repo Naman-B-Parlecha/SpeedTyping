@@ -1,0 +1,21 @@
+.keyboardContainer {
+    padding: 1rem;
+    background-color: var(--X-Black);
+    width: 100%;
+    .simple-keyboard-main{
+        background-color: transparent;
+            
+    }
+    .color1{
+        border: 1px solid var(--X-Purple);
+        background-color: transparent;
+        color: var(--X-Purple);
+        &:focus{
+            background-color: palevioletred;
+        }
+    }
+    .color2{
+        width: 35rem;
+        background-color: var(--X-Purple);
+    }
+}

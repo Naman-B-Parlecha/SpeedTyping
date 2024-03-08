@@ -1,12 +1,12 @@
 import Keyboard from "react-simple-keyboard";
 import React, { useState } from "react";
 import "react-simple-keyboard/build/css/index.css";
-import "./Typingtest.scss";
+import "./keyboard.scss";
 
-export default function CustomKeyboard({ layoutName, keyboardOptions }) {
+export default function CustomKeyboard() {
   const [layoutName, setLayoutName] = useState("default");
   
-  const [input, setInput] = useState("");
+  // const [input, setInput] = useState("");
 
   const commonKeyboardOptions = {
     onChange: (input) => onChange(input),
@@ -53,10 +53,10 @@ export default function CustomKeyboard({ layoutName, keyboardOptions }) {
     },
   };
 
-  const onChange = (input) => {
-    setInput(input);
-    console.log("Input changed", input);
-  };
+  // const onChange = (input) => {
+  //   setInput(input);
+  //   console.log("Input changed", input);
+  // };
 
   const onKeyPress = (button) => {
     console.log("Button pressed", button);
@@ -93,11 +93,11 @@ export default function CustomKeyboard({ layoutName, keyboardOptions }) {
               "` 1 ~ ! ) - + {backspace} 0 _ = {tab} Q q P p { [ ] } \\ | {capslock} A a : ; \" ' {enter} {shiftleft} Z z X x / ? {shiftright} {controlleft} {altleft} {altright} {controlright}",
             class: "color1",
           },
-          { buttons: "2 @ 9 ( W w O o S s L l C c > .", class: "color2" },
-          { buttons: "3 # 8 * E e D d  , < K k I i V v", class: "color3" },
-          { buttons: "4 $ 5 % R r T t F f G g  B b", class: "color4" },
-          { buttons: "6 ^ 7 & Y y U u H h J j N n M m", class: "color5" },
-          { buttons: " {space} ", class: "color6" },
+          { buttons: "2 @ 9 ( W w O o S s L l C c > .", class: "color1" },
+          { buttons: "3 # 8 * E e D d  , < K k I i V v", class: "color1" },
+          { buttons: "4 $ 5 % R r T t F f G g  B b", class: "color1" },
+          { buttons: "6 ^ 7 & Y y U u H h J j N n M m", class: "color1" },
+          { buttons: " {space} ", class: "color2" },
         ]}
       />
     </div>

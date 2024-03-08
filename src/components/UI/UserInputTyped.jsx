@@ -14,7 +14,7 @@ export default function UserInputTyped({ userInput, cssClass, words }) {
           <span
             key={`${char}_${index}`}
             className={classNames({
-              "text-amber-300": actual === expected && !whiteSpace,
+              "text-purple-500": actual === expected && !whiteSpace,
               "text-red-500": actual !== expected && !whiteSpace,
               "underline text-red-900": whiteSpace && actual !== expected,
             })}
