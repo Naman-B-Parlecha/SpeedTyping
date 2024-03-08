@@ -10,27 +10,40 @@ import RestartButton from "../components/UI/RestartButton";
 import ResultModal from "../components/UI/ResultModal";
 import UserInputTyped from "../components/UI/UserInputTyped";
 import { useEngine } from "../hooks/useEngine";
+import { calculateAccuracyPercentage } from "../utils/calculation";
 // const words = faker.random.words(20);
 
 export default function TypingTest() {
-  const { state, words, timeRemaining } = useEngine();
+  const {
+    state,
+    words,
+    timeRemaining,
+    typed,
+    errors,
+    restart,
+    totalTypedChars,
+  } = useEngine();
   return (
     <div className="typeTestPageCon">
       <NavBar />
-      {/* <h1 className='testheader'>Test Page</h1>
-      <p className='testmessage'>Under Construction.....</p> */}
-      {/* <button onClick={handleSignOut} className="but">SignOut</button> */}
       <div className="textMainCon">
         <CountDownTimer time={timeRemaining} />
         <div className="relative text-3xl leading-relaxed break-all">
           <GeneratedWords words={words} />
           <UserInputTyped
-            userInput={"Naman B Parlecha"}
+            userInput={typed}
             cssClass="absolute inset-0"
+            words={words}
           />
         </div>
-        <RestartButton handleRestart={() => {}} />
-        <ResultModal />
+        <RestartButton handleRestart={restart} />
+        {state === "finish" && (
+          <ResultModal
+            errors={errors}
+            accuracy={calculateAccuracyPercentage(errors, totalTypedChars)}
+            characters={totalTypedChars}
+          />
+        )}
       </div>
     </div>
   );

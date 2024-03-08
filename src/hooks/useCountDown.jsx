@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export function useCountDown({ time }) {
+export function useCountDown(time) {
+  console.log("here2:", time);
   const [timeRemaining, setTimeRemaining] = useState(time);
   const timeRef = useRef();
 

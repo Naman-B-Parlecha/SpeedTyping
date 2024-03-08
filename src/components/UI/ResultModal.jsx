@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Formatter } from "../../utils/accuracyFormatter.jsx";
 
-export default function ResultModal({ erros, accuracy, characters }) {
+export default function ResultModal({ errors, accuracy, characters }) {
   const initial = { opacity: 0 };
   const animate = { opacity: 1 };
   const duration = { duration: 0.3 };
@@ -21,7 +21,7 @@ export default function ResultModal({ erros, accuracy, characters }) {
         animate={animate}
         transition={{ ...duration, delay: 0.5 }}
       >
-        Accuracy: {Formatter(10)}
+        Accuracy: {Formatter(accuracy)}
       </motion.li>
       <motion.li
         initial={initial}
@@ -29,14 +29,14 @@ export default function ResultModal({ erros, accuracy, characters }) {
         transition={{ ...duration, delay: 1 }}
         className="text-red-500"
       >
-        Errors: 10
+        Errors: {errors}
       </motion.li>
       <motion.li
         initial={initial}
         animate={animate}
         transition={{ ...duration, delay: 1.5 }}
       >
-        Characters: 56
+        Characters: {characters}
       </motion.li>
     </motion.ul>
   );

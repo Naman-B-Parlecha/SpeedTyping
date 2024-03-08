@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { FaRedoAlt } from "react-icons/fa";
+
 export default function RestartButton({ handleRestart }) {
   const buttonRef = useRef();
   function handleClick() {
