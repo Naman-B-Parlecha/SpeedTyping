@@ -6,22 +6,14 @@
     display: flex;
     flex-flow: column wrap;
     align-items: center;
-    // position: relative;
-    .testheader{
-        color: var(--X-Purple);
-        padding-top: 12rem;
-        font-weight: 600;
-        font-family: "Kanit", sans-serif;
-        font-size: 3rem;
-        letter-spacing: 0.5rem;
-    }
-    .testmessage{
-        color: var(--X-Purple);
-        font-weight: 400;
-        font-family: "Kanit", sans-serif;
-        font-size: 1.5rem;
-    }
-    .but{
-        background-color: aliceblue;
+
+    .textMainCon{
+        padding-top: 2rem;
+        // background-color: aquamarine;
+        width: 75%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem
     }
 }
