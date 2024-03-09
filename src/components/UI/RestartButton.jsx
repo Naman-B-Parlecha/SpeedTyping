@@ -8,8 +8,8 @@ export default function RestartButton({ handleRestart }) {
     handleRestart();
   }
   return (
-    <button ref={buttonRef} onClick={handleClick} className="w-fit p-4">
-      <FaRedoAlt className="text-purple-400 w-6 h-6" />
+    <button ref={buttonRef} onClick={handleClick} className="w-fit p-4 border-none outline-none">
+      <FaRedoAlt className="text-black w-6 h-6" />
     </button>
   );
 }

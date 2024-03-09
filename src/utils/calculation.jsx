@@ -28,3 +28,13 @@ export const debug = (str) => {
     console.debug(str);
   }
 };
+
+export function calculateWpm(
+  totalCharsTyped,
+  totalErrors,
+  durationInSeconds = 30
+) {
+  let durationInMinutes = durationInSeconds / 60;
+  let wpm = (totalCharsTyped - totalErrors) / (5 * durationInMinutes);
+  return wpm;
+}

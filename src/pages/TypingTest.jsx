@@ -30,21 +30,22 @@ export default function TypingTest() {
       <div className="textMainCon">
         <CountDownTimer time={timeRemaining} />
         <div className="relative text-3xl leading-relaxed break-all">
-          <GeneratedWords words={words}/>
+          <GeneratedWords words={words} />
           <UserInputTyped
             userInput={typed}
             cssClass="absolute inset-0"
             words={words}
           />
         </div>
-        <RestartButton handleRestart={restart} />
-        {/* {state === "finish" && (
+        {state === "finish" && (
           <ResultModal
             errors={errors}
             accuracy={calculateAccuracyPercentage(errors, totalTypedChars)}
             characters={totalTypedChars}
+            open={state === "finish"}
+            restart={restart}
           />
-        )} */}
+        )}
         <CustomKeyboard />
       </div>
     </div>

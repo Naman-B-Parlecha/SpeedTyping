@@ -1,43 +1,52 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
 import { Formatter } from "../../utils/accuracyFormatter.jsx";
-
-export default function ResultModal({ errors, accuracy, characters }) {
-  const initial = { opacity: 0 };
-  const animate = { opacity: 1 };
-  const duration = { duration: 0.3 };
-  return (
-    <motion.ul className="flex flex-col items-center text-amber-200 space-y-4">
-      <motion.li
-        initial={initial}
-        animate={animate}
-        transition={{ ...duration, delay: 0 }}
-        className="text-xl font-semibold"
-      >
-        Result Modal
-      </motion.li>
-      <motion.li
-        initial={initial}
-        animate={animate}
-        transition={{ ...duration, delay: 0.5 }}
-      >
-        Accuracy: {Formatter(accuracy)}
-      </motion.li>
-      <motion.li
-        initial={initial}
-        animate={animate}
-        transition={{ ...duration, delay: 1 }}
-        className="text-red-500"
-      >
-        Errors: {errors}
-      </motion.li>
-      <motion.li
-        initial={initial}
-        animate={animate}
-        transition={{ ...duration, delay: 1.5 }}
-      >
-        Characters: {characters}
-      </motion.li>
-    </motion.ul>
+import RestartButton from "./RestartButton.jsx";
+import "./ResultModal.scss";
+import { createPortal } from "react-dom";
+import { calculateWpm } from "../../utils/calculation.jsx";
+export default function ResultModal({
+  errors,
+  accuracy,
+  characters,
+  open,
+  restart,
+}) {
+  const resultRef = useRef();
+  useEffect(()=>{
+    if(open){
+      resultRef.current.showModal();
+    }
+  },[open]);
+  return createPortal(
+    <>
+      {open && <div className="backdropCon" />}
+      <dialog className="resultModalCon" ref={resultRef} onClose={restart}>
+        <h1 className="resultModalHead">Result Modal</h1>
+        <div className="row">
+          <div className="col">
+            <p>Speed : </p>
+            <p>{calculateWpm(characters, errors, 30)} wpm</p>
+          </div>
+          <div className="col">
+            <p>Accuracy : </p>
+            <p>{Formatter(accuracy)}</p>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col">
+            <p className="error">Errors : </p>
+            <p className="error">{errors}</p>
+          </div>
+          <div className="col">
+            <p>Characters : </p>
+            <p>{characters}</p>
+          </div>
+        </div>
+        <div className="restartBtnCon">
+          <RestartButton handleRestart={restart} />
+        </div>
+      </dialog>
+    </>,
+    document.getElementById("modal")
   );
 }
